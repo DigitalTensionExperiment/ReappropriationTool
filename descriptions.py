@@ -12,4 +12,4 @@ tools_descriptions = {
     "xray": "Artifactory image scanning ;",
 }
 
-actions = ["build processes", "build time", "run time"]
+terms = ["build processes", "build time", "run time"]
