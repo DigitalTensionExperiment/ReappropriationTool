@@ -1,8 +1,9 @@
-
-desc = {"anchor": "",
-        "artifactory": "",
-        "bitbucket": "",
-        "cassandra": "",
-        "vagrant": "",
-        "vericode": "",
-        }
+desc = {
+    "anchor": "",
+    "artifactory": "",
+    "bitbucket": "",
+    "cassandra": "",
+    "docker": "",
+    "vagrant": "",
+    "vericode": "",
+}
