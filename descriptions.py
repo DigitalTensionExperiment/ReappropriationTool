@@ -6,4 +6,5 @@ desc = {
     "docker": "",
     "vagrant": "",
     "vericode": "",
+    "xray": "",
 }
