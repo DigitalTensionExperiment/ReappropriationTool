@@ -3,7 +3,7 @@ ping = "how long it takes a request to go to a server and come back, an amount o
 bandwidth = "speed of data going between, amount of data, the amount of data moving per sec"
 
 
-terms = [ "cluster", "agent", "virtual machine", "cluster coordination", "build processes", "build time", "run time", "infrastructure as code", "workload", "resource isolation", "Robert's Rules of Order"]
+terms = ["component", "scheduling", "cluster", "daemon", "host", "agent", "virtual machine", "cluster coordination", "build processes", "build time", "run time", "infrastructure as code", "workload", "resource isolation", "Robert's Rules of Order"]
 
 general = {
     "workload": "a set of work to be executed",
@@ -30,4 +30,4 @@ tools_descriptions = {
 
 
 
-actions = ["executes"]
+actions = ["executes", "fingerprint"]
