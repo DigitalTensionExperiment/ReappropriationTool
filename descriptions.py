@@ -1,4 +1,4 @@
-desc = {
+tools_descriptions = {
     "anchor": "Implement security policies at build ;",
     "artifactory": "",
     "bitbucket": "",
@@ -10,4 +10,8 @@ desc = {
     "vagrant": "",
     "vericode": "",
     "xray": "Artifactory image scanning ;",
+}
+
+actions = {
+
 }
