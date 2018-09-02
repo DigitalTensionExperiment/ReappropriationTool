@@ -7,6 +7,7 @@ terms = ["component", "scheduling", "cluster", "daemon", "host", "agent", "virtu
 
 general = {
     "workload": "a set of work to be executed",
+    "state replication": "consensus"
 }
 
 tools_descriptions = {
@@ -15,6 +16,7 @@ tools_descriptions = {
     "packer": "Handles automated machine imaging (for AWS machines, etc.);",
     "bitbucket": "",
     "cassandra": "",
+    "consul": "each server and client will become aware of each other when a consul agent is installed on each host ;",
     "docker": "Allows container creation from image files ;",
     "jenkins": "Runs build processes ;",
     "kafka": "",
@@ -28,6 +30,36 @@ tools_descriptions = {
 }
 
 
+agent_based_technologies = [
+    "appDynamics",
+    "nomad",
+    "consul"
+]
 
 
-actions = ["executes", "fingerprint"]
+actions = ["executes", "fingerprint", "evaluate the job request", "allocate resources",
+           "send info out to the different nodes", "replicate the job", "send [job] into different groups", ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

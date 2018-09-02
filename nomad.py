@@ -12,6 +12,50 @@
 
     * Try to do things in parallel to reduce wait time ;
 
+    Nomad is a single stack binary, that can run as client as well as server mode;
+
+    agent(client mode):
+    The agent is reponsible for profiling the system,
+    and provide "liveness" checks, detects heartbeats;
+    They run any task that's given;
+    Maintains communication with central servers in order to receive jobs;
+
+    agent(server mode):
+    responsible for maintaining the data set of all the resources on on each host;
+    scheduling those resources;
+    participates in leader elections;
+    runs replications when necessary;
+    discovers other nomad servers;
+    etc. ...
+
+    Start the agent by pointing it to the config file;
+    It may be configured to spin up, but not configured to talk to other servers;
+    > how to inform the servers and clients of each other in order for them to join ?
+    This can be done manually or automated;
+    Chicken and egg problem with manual bootstrapping: doesn't require any initial tooling,
+        but does require some operator participation ;
+        > when a client is getting initially started, it has to be informed of at least one nomad server ;
+        So one server has to be fully bootstrapped and running until the rest ... ;
+        Adds additional provisioning time, delays ;
+        Order dependency issues ;
+
+        0 - bootstrap a single nomad server
+        1 - catch it's IP address
+        2 - put it in configuration
+
+
+    config flag can be used multiple times in one nomad agent command;
+
+    [bootstrap_expect = 3]: if we had a high availability clust of... say 5, 3 would be the majority ;
+
+    Each server joins just one other server, and learns about the rest via gossip protocol -
+    > have them all learn about 1 IP address and they can all learn about each other ;
+
+    On the client side:
+    > Address of servers are expected to be available with the client config file;
+
+    If set up in automatic mode: leverage a different tool >> Consul ;
+
 '''
 
 # "C-2 level, military grade, crypto security"
@@ -48,4 +92,48 @@ terms = {
 # A specific task runs on a specific machine, which determines the resource constraints "of it"
 
 # Tasks to execute: images firing off a binary, node(s) launching a web application, etc;
+
+
+
+
+commands = {
+    "nomad" : "agent -config=/path/to/config.hcl",
+    "nomad" : "server-join <known_address>", # currently, there's no equivalent of this for clients: they just connect ;
+    "consul" : "",
+}
+
+
+
+paths = {
+    "/etc": "/nomad.d/config.hcl"
+}
+
+
+confighcl = {
+    "bootstrap_expect = 3": "at least 3 need to come up before we can reach a quarum and have a majority, and the "
+                            "cluster can thus go live ;"
+
+}
+
+
+questions = {
+
+    "How does a server hold information about other memnbers?" : "", #directory?
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
