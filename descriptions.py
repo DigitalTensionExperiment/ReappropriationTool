@@ -3,7 +3,9 @@ ping = "how long it takes a request to go to a server and come back, an amount o
 bandwidth = "speed of data going between, amount of data, the amount of data moving per sec"
 
 
-terms = ["component", "scheduling", "cluster", "daemon", "host", "agent", "virtual machine", "cluster coordination", "build processes", "build time", "run time", "infrastructure as code", "workload", "resource isolation", "Robert's Rules of Order"]
+terms = ["component", "scheduling", "cluster", "daemon", "host", "agent", "virtual machine", "cluster coordination",
+         "build processes", "build time", "run time", "infrastructure as code", "workload", "resource isolation",
+         "Robert's Rules of Order", "short term performance fluctuations"]
 
 general = {
     "workload": "a set of work to be executed",
@@ -16,7 +18,8 @@ tools_descriptions = {
     "packer": "Handles automated machine imaging (for AWS machines, etc.);",
     "bitbucket": "",
     "cassandra": "",
-    "consul": "each server and client will become aware of each other when a consul agent is installed on each host ;",
+    "consul": "each server and client will become aware of each other when a consul agent is installed on each host ; "
+              "already multi-dc-aware ;",
     "docker": "Allows container creation from image files ;",
     "jenkins": "Runs build processes ;",
     "kafka": "",
@@ -27,6 +30,12 @@ tools_descriptions = {
     "vault": "security",
     "vericode": "",
     "xray": "Artifactory image scanning ;",
+}
+
+examples = {
+    "service_scheduler": ['webApp', 'redis'],
+    "batch_scheduler": ["billing", "data replication"],
+    "system_scheduler": ["logging agent", "security auditing tool"]
 }
 
 

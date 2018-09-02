@@ -93,10 +93,21 @@ terms = {
 
 # Tasks to execute: images firing off a binary, node(s) launching a web application, etc;
 
+# Constraints get enforced by schedulers
+service_schedular = "ranks a large portion of the nodes that meet the job criteria, " \
+                    "and selects the optimal node in order to place a task group"
 
+schedular_job_types = {
+    'service': ["for scheduling long lived services that should never go down", "a daemon process"],
+    'batch': ["short lived", "less sensitive to short term performance fluctions",
+              "run in the middle of the night when system usage is lower"],
+    'system': ["run on all clients which meet the job constraints", "invoked when clients joined cluster",
+               "invoked when clients are switched into ready state"]
+}
 
 
 commands = {
+    "nomad": "init", # generates a sample job file ;
     "nomad" : "agent -config=/path/to/config.hcl",
     "nomad" : "server-join <known_address>", # currently, there's no equivalent of this for clients: they just connect ;
     "consul" : "",
@@ -125,7 +136,15 @@ questions = {
 
 
 
+#  job >
+##  group(s) >
+###   task(s) >
+#########   Resources
+#########   Constraints
 
+# There is 1 job definition per file
+# job names must be unique within the scope of the entire nomad cluster :
+#   "everything gets a name, and every name is unique": this is also common with docker ;
 
 
 
