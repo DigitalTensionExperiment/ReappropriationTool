@@ -29,6 +29,7 @@
     etc. ...
 
     Start the agent by pointing it to the config file;
+
     It may be configured to spin up, but not configured to talk to other servers;
     > how to inform the servers and clients of each other in order for them to join ?
     This can be done manually or automated;
@@ -46,7 +47,7 @@
 
     config flag can be used multiple times in one nomad agent command;
 
-    [bootstrap_expect = 3]: if we had a high availability clust of... say 5, 3 would be the majority ;
+    [bootstrap_expect = 3]: if we had a high availability cluster of... say 5, then 3 would be the majority ;
 
     Each server joins just one other server, and learns about the rest via gossip protocol -
     > have them all learn about 1 IP address and they can all learn about each other ;
@@ -63,24 +64,46 @@
 terms = {
 
     "node": ["A physical or virtual machine in a cluster", "A machine running the nomad agent"],
-    "nomad agent": ["a long running daemon", "every member of the cluster has", "runs in client mode", "server mode",
+
+    "agent": ["a long running daemon", "every member of the cluster has", "runs in client mode", "server mode",
                     "is able to run in either mode"],
     "client mode": ["will fingerprint the host", "determine cabilities, resources, and available drivers",
                     "has drivers at its disposal"],
     "server mode": ["has the global state of the cluster", "participates in the scheduling decisions"],
-    "job": ["definition of how a workload should be scheduled", "composed of 1 or more task groups"],
-    "task group": ["a collection of individual tasks", "co-located on one node", "same node",
-                   "for apps that require low latency or high throughput", "in kubernetes, called a pod"],
-    "task(s)": ["defines a series of resource constraints and configurations", "a set of work to be executed", "get(s) executed but [their] driver"],
+
+
+
+
     "job file": ["describes how a workload should be scheduled ;", "A configuration file located on disk ;",
                  "Can be HCL or JSON ;"],
-    "driver": ["pluggable component", "executes a task", "provides resource isolation", "docker", "java", "raw-exec",
-               "raw exec"],
+
+    "job": ["definition of how a workload should be scheduled", "composed of 1 or more task groups"],
+
+    "task group": ["a collection of individual tasks", "co-located on one node", "same node",
+                   "for apps that require low latency or high throughput", "in kubernetes, called a pod"],
+
+    "task(s)": ["defines a series of resource constraints and configurations", "a set of work to be executed", "get(s) executed by [their] driver"],
+
+
+
+
+    "driver": ["pluggable component", "executes a task", "provides resource isolation",
+               "docker", "java", "raw-exec", "raw exec"],
+
+
+
+
     "evaluation": ["calculation performed by nomad servers", "determine what actions need to take place to execute a job"],
+
     "datacenter": ["a private networking env", "low latency", "high bandwidth"],
+
     "concensus": ["an agreement between leaders / managers"],
+
+
     "managers": ["equally ranked"],
-    "gossip": ["node-to-node communication", "primarily over UDP", "provides membership", "failure detection",
+
+
+    "gossip": ["node-to-node communication algorithm", "primarily over UDP", "provides membership", "failure detection",
                "broadcasts info to whole cluster", "built in Serf", "standard scale used for cluster coordination"],
     "bin-packing": ["an algorithm", "optimizes resource utilization", "optimizes application density",
                     "augmented by affinity and anti-affinity rules", "the opposite of spreading things out",
@@ -94,10 +117,12 @@ terms = {
 # Tasks to execute: images firing off a binary, node(s) launching a web application, etc;
 
 # Constraints get enforced by schedulers
-service_schedular = "ranks a large portion of the nodes that meet the job criteria, " \
-                    "and selects the optimal node in order to place a task group"
+service_schedular = {
+    "evaluation": ["ranks a large portion of the nodes that meet the job criteria", "selects the optimal node in order to place a task group"],
+    "allocation": []
+}
 
-schedular_job_types = {
+scheduler_job_types = {
     'service': ["for scheduling long lived services that should never go down", "a daemon process"],
     'batch': ["short lived", "less sensitive to short term performance fluctions",
               "run in the middle of the night when system usage is lower"],
@@ -110,6 +135,7 @@ commands = {
     "nomad": "init", # generates a sample job file ;
     "nomad" : "agent -config=/path/to/config.hcl",
     "nomad" : "server-join <known_address>", # currently, there's no equivalent of this for clients: they just connect ;
+    "nomad" : "node status", # If no node ID is passed, then ... get a bird's-eye view of things ;
     "consul" : "",
 }
 
@@ -130,9 +156,16 @@ confighcl = {
 questions = {
 
     "How does a server hold information about other memnbers?" : "", #directory?
+    "system level job types only run on clients, and not servers?": "",
 
 }
 
+
+
+# corp network: has 1 server ;
+# aus and dal: each have ~5 servers (techinally 10, but weird domain name situation);
+
+# weird domain name situation
 
 
 

@@ -19,12 +19,14 @@ tools_descriptions = {
     "bitbucket": "",
     "cassandra": "",
     "consul": "each server and client will become aware of each other when a consul agent is installed on each host ; "
-              "already multi-dc-aware ;",
+              "already multi-dc-aware ; can do health check ; can do service discovery ; cluster-aware Redis, more like Nagios ;",
     "docker": "Allows container creation from image files ;",
     "jenkins": "Runs build processes ;",
     "kafka": "",
     "nginx": "web server ;",
+    "nagios": "",
     "nomad": "scheduling and deployments ;",
+    "redis": "handles key/value pairs ;",
     "terraform": "Allows infrastructure as code, lifecycle management, service discovery, running healthchecks, distributed key value stores ;",
     "vagrant": "Handles environment provisioning ;",
     "vault": "security",
@@ -45,6 +47,15 @@ agent_based_technologies = [
     "consul"
 ]
 
+
+DNS = [
+    "network distrbuted DB",
+    "contains key/value pairs",
+    "prior to AD (active directory) or LDAP",
+    "CNAME",
+    "A records of CNAME",
+    "RP (responsible party) records of CNAME",
+]
 
 actions = ["executes", "fingerprint", "evaluate the job request", "allocate resources",
            "send info out to the different nodes", "replicate the job", "send [job] into different groups", ]

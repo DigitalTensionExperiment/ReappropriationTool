@@ -56,31 +56,31 @@
 
 
 
-//    task "appd_proxy-dev" {
+//    task "" {
       ##----------------------------------------------------------------------------
       # JOB : Group : [task]
       ##----------------------------------------------------------------------------
 
       # drivers and driver specific configs
-      # driver = "docker"
-
+      # The drive executes the task
+      # driver = "" (ie: docker)
 
 //      config {
+
 //        logging {
-//          type = "journald"
+//          type = "" (ie: journald)
+            # Why does this config block, inside a config block, have a tag value ?
 //          config {
 //            tag = ""
 //          }
 //        }
-
 
 //        volumes = [
 //          "/:/hostroot:ro",
 //          "/var/run/docker.sock:/var/run/docker.sock",
 //          "/var/run/appd:/var/run/appd"
 //        ]
-
-        # image = ""
+//        image = ""
 
       ##----------------------------------------------------------------------------
       # JOB : Group : / [task]
